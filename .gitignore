@@ -1,0 +1,7 @@
+# Ignore temporary MATLAB files
+*.m~
+
+# Ignore everything in source_files/figures/
+source_data/figures/*
+# this ensures that the empty foder 'figures' will be included in the repo
+!source_data/figures/.gitkeep
