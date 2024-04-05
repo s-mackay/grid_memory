@@ -77,7 +77,7 @@ imshow(pref_jpg)
 axes('Position', [1.5*padding+1.5*padding+thumbnail_w, 3*padding+2*pl_h, dens_w, pl_h]);
 
 %% density plot
-spike_f = sprintf('%s/density_%s_%i.mat', image_directory, stim_type, id);
+spike_f = sprintf('%s/density_%s_%i.mat', data_dir, stim_type, id);
 load(spike_f, 'spikeshapes')
 density_plot(spikeshapes)
 xticks([-.5 0 .5 1 1.34])
