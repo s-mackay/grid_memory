@@ -23,5 +23,4 @@ all_figures_and_stats(data_directory, read_from_excel);
 
 ## .mat and .xlsx files
 
-As per requirement of the journal, I tried to provide all source files both in .mat and .xlsx format. This was not possible for figure 3, S3 and S4, since their source files were to large to be included in a git repo when saved as .xlsx.
-Reading .xlsx files is slow and not recommended.
+As per requirement of the journal, I am providing the summary data required to plot the figure as .xlsx, in the file source_data/source_data_all_figures.xlsx.
