@@ -107,8 +107,8 @@ set(gca, 'yticklabel', [], 'fontsize', fs-1)
 thumb_padding = raster_height*.2/(n_stims);
 thumb_height = raster_height*.8/n_stims;
 for i=1:n_stims
-    axes('position', [.05, raster_bottom+thumb_padding*(n_stims-i+.5)...
-        +thumb_height*(n_stims-i), .25, thumb_height])
+    axes('position', [.05, raster_bottom+thumb_padding*(n_stims-i+.5)+...
+        thumb_height*(n_stims-i), .25, thumb_height])
     axis off
     imshow(jpg_paths{i})
 end

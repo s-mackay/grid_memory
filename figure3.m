@@ -74,20 +74,25 @@ end
 
 % what kind of figure is it
 if no_overlaps==0 && narrow_ylims==0 && which_half==0 && binned_test==1
-    which_figure = '3';
+    load_figure = '3'; 
+    plotname = '3';
 elseif no_overlaps==2 && narrow_ylims==0 && which_half==0 && binned_test==1
-    which_figure = 'S4';
+    load_figure = 'S4'; 
+    plotname  = 'S4';
 elseif no_overlaps==0 && narrow_ylims==1 && which_half==0 && binned_test==1
-    which_figure = 'S3';
+    % here we use the same data as in figure 3, but save as figure S3
+    % because scaling is different
+    load_figure = '3';
+    plotname = 'S3';
 else
-    which_figure = sprintf('3_variation_with%s%s%s_%s', overl_str,...
+    load_figure = sprintf('3_variation_with%s%s%s_%s', overl_str,...
         yZoomStr, half_str, testname);
 end
 
 % for loading or saving source data from/to excel
-if ~narrow_ylims %because then we can just use figure3 data 
-    sheet_name = sprintf('figure_%s', which_figure);
-end
+% if ~narrow_ylims %because then we can just use figure3 data 
+    sheet_name = sprintf('figure_%s', load_figure);
+% end
 
 % we define only one alpha level to separate all cells into responsive or
 % non-responsive
@@ -511,7 +516,7 @@ if ~read_from_excel && ~narrow_ylims %because then we can just use figure3 data
 end
 
 
-fname = sprintf('%s/figures/Figure%s.png', data_dir, which_figure);
+fname = sprintf('%s/figures/Figure%s.png', data_dir, plotname);
 print(gcf, '-dpng', fname, '-r600');
 fname_eps = [fname(1:end-3), 'eps'];
 print('-painters', gcf, '-depsc', fname_eps);

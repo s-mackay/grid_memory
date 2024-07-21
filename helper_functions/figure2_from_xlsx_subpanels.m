@@ -1,4 +1,4 @@
-function figure2_from_xlsx(results, item_or_loc, id)
+function figure2_from_xlsx_subpanels(results, item_or_loc, id)
 
 % function figure2_from_xlsx(results, item_or_loc, id)
 % Produces a figure from summary data in an Excel sheet
