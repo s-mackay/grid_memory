@@ -1,5 +1,3 @@
-function results_cell = read_fig2_results_from_xlsx(fname, sheet_name)
-
 % function results_cell = read_fig2_results_from_xlsx(fname, sheetName)
 % reads the data from the specified Excel file and worksheet.
 %
@@ -10,7 +8,12 @@ function results_cell = read_fig2_results_from_xlsx(fname, sheet_name)
 %   Outputs:
 %       results_cell: Cell array containing the data from the specified 
 %       worksheet.
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
 
+function results_cell = read_fig2_results_from_xlsx(fname, sheet_name)
 
     % Read the content of the spreadsheet as a cell array
     data = readcell(fname, 'Sheet', sheet_name);

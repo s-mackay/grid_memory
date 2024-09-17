@@ -1,15 +1,17 @@
-function [handles, results] = perm_multcompare_gm_publ(...
-    condA, condB,nperms, clusteralpha, alpha, xaxis, ...
-    conditionnames, ax1, markSize, LfontSiz, plot_info)
-
-
 %% function to run pairwise comparision and one-sample t-test
 % against zero and plot all results into the same plot
-%function [handles] = perm_multcompare(condA, condB, nperms, ...
+% function [handles] = perm_multcompare(condA, condB, nperms, ...
 %                          clusteralpha, alpha, xaxis, plotcolors,...
 %                          conditionnames, ax1, markSize, LfontSiz,...
 %                          plot_info)
+%
+% Portions of this code were adapted from work by Thomas Reber, with 
+% permission. Original work can be found at 
+% https://github.com/rebrowski/neuralAdapatationInMTL
 
+function [handles, results] = perm_multcompare_gm_publ(...
+    condA, condB,nperms, clusteralpha, alpha, xaxis, ...
+    conditionnames, ax1, markSize, LfontSiz, plot_info)
 
 if ~exist('nperms', 'var')
     nperms = 10000;
@@ -181,9 +183,6 @@ for i_s = 1:length(both_singals)
     m(i_s, :) = mean(signal, 1);
     sd = std(signal, 1);
     sem(i_s, :) = sd./sqrt(nsigs);
-    if any(isnan(signal(:,1)))
-        keyboard
-    end
 end
 results.means     = m;
 results.sem       = sem;

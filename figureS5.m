@@ -1,15 +1,27 @@
-function figureS5(data_dir, load_from_excel)
+% figureS5(data_dir, read_from_excel)
+%
+% INPUTS:
+%   data_dir (str):         Path to source data (default: 'source_data').
+%
+%   read_from_excel (bool): Flag to read from Excel (true) 
+%                           or .mat files (false) (default: false).
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function figureS5(data_dir, read_from_excel)
 
 plot_visibility = 'on';
 alpha_resp = .001;
 alpha_nonresp = .001;
 fs = 12;
 if nargin <1;   data_dir = 'source_data';       end
-if nargin <2;   load_from_excel = false;        end
+if nargin <2;   read_from_excel = false;        end
 rgns  = {' Amy', 'Hipp', '  EC', ' PHC'};
 types = {'items', 'locs '};
 
-if load_from_excel
+if read_from_excel
     fname_excel = sprintf('%s/source_data_all_figures.xlsx',...
         data_dir);
     % 4 (regions) x 2 (item/loc) x 2 (resp/non-resp) 

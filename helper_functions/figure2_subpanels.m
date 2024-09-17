@@ -1,6 +1,3 @@
-
-function [results] = figure2_subpanels(data_dir, id, item_or_loc, spiketable)
-
 % [results] = figure2(data_dir, id, item_or_loc, spiketable)
 %
 % this function will plot one of the 4 panels as seen in figure 2
@@ -9,7 +6,15 @@ function [results] = figure2_subpanels(data_dir, id, item_or_loc, spiketable)
 %      data_dir (str): path to source data
 %            id (int): row number within spiketable of unit to plot
 %    img_or_pos (int): 1: plot image response, 2: plot location response
-%  spiketable (table): optoinal. Contains the experimental data and spike times    
+%  spiketable (table): optoinal. Contains the experimental data and spike time
+% OUTPUTS:
+%    results (struct): contains spiking time stamps and mean firing rates
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function [results] = figure2_subpanels(data_dir, id, item_or_loc, spiketable)
 
 if nargin < 1
     data_dir  = 'source_data';

@@ -1,17 +1,21 @@
-function [results] = figureS1_item(data_dir, id, data, read_from_xlsx)
-
 % function [results] = figureS1_item(data_dir, id, data, read_from_xlsx)
 % this function creates full rasterplots for item cells
 %
-% parameters
+% INPUTS:
 %       data_dir (str): path to source_data directory
 %             id (int): 1 or 2, since there are 2 units of each type
 %                       (responding to items or locations)
+%
 % data (table or cell): the classic option is spiketable, which is loaded
 %                       from .mat files. alternatively the struct called
 %                       results.
 % read_from_xlsx(bool): was the data loaded from .xlsx? (or .mat)
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
 
+function [results] = figureS1_item(data_dir, id, data, read_from_xlsx)
 
 % set source directory for images and density data
 if nargin < 1; data_dir = 'source_data'; end
@@ -80,6 +84,8 @@ else
         results.(fieldname) = sp_img{i}; 
         image_fname = spiketable.fname{id}{find(stim_order==i, 1)};
         jpg_paths{i} = sprintf('%s/%s', image_folder, image_fname);
+        jpg_paths{i} = strrep(jpg_paths{i}, 'patient_person',...
+            'patient_person_written');
     end
     n_trials = sum(valid_trials);
 end

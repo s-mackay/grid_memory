@@ -1,9 +1,23 @@
+% figureS6(data_dir, read_from_excel)
+%
+% INPUTS:
+%   data_dir (str):         Path to source data (default: 'source_data').
+%
+%   read_from_excel (bool): Flag to read from Excel (true) 
+%                           or .mat files (false) (default: false).
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
 function figureS6(data_dir, read_from_excel)
 
 %formerly called response_permutation
 file = 'labelshuf_10k_perms_nResponses';
 file_xlsx = 'source_data_all_figures.xlsx';
 sheet_name = 'figure_S6';
+if nargin <1;   data_dir = 'source_data';       end
+if nargin <2;   read_from_excel = false;        end
 tic;
 if read_from_excel
     results_struct = read_figS6_results_from_xlsx(file_xlsx, sheet_name);

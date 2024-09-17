@@ -1,6 +1,10 @@
-function gm_raster_vertical(data_dir, id, item_or_loc, spiketable)
+%function gm_raster_vertical(data_dir, id, item_or_loc, spiketable)
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
 
-%function gm_raster_vertical(id, which_part, spikecell, ids)
+function gm_raster_vertical(data_dir, id, item_or_loc, spiketable)
 
 %load data
 if nargin < 1; data_dir = 'source_data'; end

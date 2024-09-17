@@ -1,14 +1,43 @@
-function gm_counting_consolidation(data_dir, read_from_excel)
-
 % function gm_counting_consolidation(data_dir, read_from_excel)
+%
+% INPUTS:
+%           data_dir (str): Path to source data (default: 'source_data').
+%   read_from_excel (bool): Flag to read from Excel (true) 
+%                           or .mat files (false) (default: false).
+%
 % here we consider all units responding to exactly one item or location
 % we compare their firing rates during the distraction task for
 % subsequently correct vs. incorrect responses.
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function gm_counting_consolidation(data_dir, read_from_excel)
 
 if read_from_excel
     response_info = readtable(sprintf('%s/source_data_all_figures.xlsx',...
         data_dir), 'Sheet', 'figure_S2');
-    counting_table = readtable(sprintf('%s/fr_counting.xlsx', data_dir));
+    % reading it this way to include empty leading rows
+    counting_fname = sprintf('%s/fr_counting.xlsx', data_dir);
+    colnames = detectImportOptions(counting_fname).VariableNames;
+    counting_mat = readmatrix(sprintf('%s/fr_counting.xlsx', data_dir),...
+        'Range', 'A1');
+    counting_mat(1,:) = []; % it appears to read in one extra row
+    counting_table = array2table(counting_mat, 'VariableNames', colnames);
+    % Check the current height (number of rows)
+    currentHeight = height(counting_table);
+    n_units = 3681;
+    % If the current height is less than 3000, add NaN rows
+    if currentHeight < n_units
+    % Calculate how many rows to add
+        rowsToAdd = n_units - currentHeight;
+        % new table of NaNs with the same number of cols as counting_table
+        nanTable = array2table(nan(rowsToAdd, width(counting_table)),...
+            'VariableNames', counting_table.Properties.VariableNames);
+        % Append the NaN rows to the original table
+        counting_table = [counting_table; nanTable];
+    end
 else
     load(sprintf('%s/response_info.mat', data_dir), 'response_info');
     load(sprintf('%s/fr_counting.mat', data_dir), 'counting_table');

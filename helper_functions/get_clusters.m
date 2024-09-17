@@ -1,13 +1,18 @@
-function [pos neg] = get_clusters(vals, mode)
-%% this is  a subfunction of perm_ttest.m, perm_oneway.m and gets cluster infos
-% from a series of values (t/F,1-D array of either from the true or one of the
+% [pos, neg] = get_clusters(vals, mode)
+% this is  a subfunction of perm_ttest.m, perm_oneway.m and gets cluster infos
+% from a series of values (t/f,1-D array of either from the true or one of the
 % false label assignments)
 % vals shouls already be thresholded, i.e., only contain vals
 % for which p  < clusteralpha, and all other samples should be zero
+%
+% Portions of this code were adapted from work by Thomas Reber, with 
+% permission. Original work can be found at 
+% https://github.com/rebrowski/neuralAdapatationInMTL
 
+function [pos, neg] = get_clusters(vals, mode)
     if ~exist('mode', 'var')    
         %mode = 'maxsize';   % return only the largest cluster
-        mode = 'maxsum'; % return only the cluster with the
+        %mode = 'maxsum'; % return only the cluster with the
                                 % highest t-value
         mode = 'all';
     end
@@ -66,11 +71,11 @@ function [pos neg] = get_clusters(vals, mode)
     negi = [];
     %% in case only the largest/strongest cluster is desired:
     switch mode
-      case 'maxsum';
+      case 'maxsum'
         posi = find(max(pos.sumts));
         negi = find(min(neg.sumts));
         
-      case 'maxsize';
+      case 'maxsize'
         posi = find(max(pos.sizes));
         negi = find(max(neg.sizes));
     end
@@ -91,5 +96,4 @@ function [pos neg] = get_clusters(vals, mode)
             neg.sizes = neg.sizes(negi);
         end
     end
-    
 end

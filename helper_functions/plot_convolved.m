@@ -1,10 +1,17 @@
-function handles = plot_convolved(results, which_panel, plot_info, curr_ax)
-
+% plot_convolved(results, which_panel, plot_info, curr_ax)
+%
 % this function plots the main figures from summary source data saved in
 % .xlsx format, rather than raw data
 % it is a combination of elements of perm_multcompare_gm_publ.m and
 % plot_signals.m, and was put together in response to final requests to
 % combine all plotted data into one excel sheet. 
+%
+% Portions of this code were adapted from work by Thomas Reber, with 
+% permission. Original work can be found at 
+% https://github.com/rebrowski/neuralAdapatationInMTL
+% -------------------------------------------------------------------------
+
+function handles = plot_convolved(results, which_panel, plot_info, curr_ax)
 
 m = cell2mat(results.means(which_panel(1), which_panel(2)));
 sem = cell2mat(results.sems(which_panel(1), which_panel(2)));

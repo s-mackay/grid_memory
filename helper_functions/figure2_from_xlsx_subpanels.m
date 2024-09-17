@@ -1,8 +1,6 @@
-function figure2_from_xlsx_subpanels(results, item_or_loc, id)
-
 % function figure2_from_xlsx(results, item_or_loc, id)
-% Produces a figure from summary data in an Excel sheet
 %
+% Produces a figure from summary data in an Excel sheet
 % This function generates a figure based on the summary data provided in
 % the input struct 'results', which is loaded from an Excel file. The
 % figure produced corresponds to figure 2 in a publication, showing either
@@ -26,9 +24,14 @@ function figure2_from_xlsx_subpanels(results, item_or_loc, id)
 % This is a reduced version of figure2. No statistical analysis is 
 % performed, it simply produces a figure from the summary data in the 
 % spreadsheet.
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
 
-%% configure figure
+function figure2_from_xlsx_subpanels(results, item_or_loc, id)
 
+% configure figure
 fs = 16; %font size
 h1 = figure('visible', 'on');
 set(h1, 'PaperUnits','centimeters');

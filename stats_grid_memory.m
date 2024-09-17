@@ -1,5 +1,3 @@
-function stats_grid_memory(data_dir, read_from_excel, show_plots)
-
 % stats_grid_memory (data_dir, read_from_excel, show_plots)
 % this function prints stats into the console and 
 % generates some figures
@@ -8,6 +6,12 @@ function stats_grid_memory(data_dir, read_from_excel, show_plots)
 %          data_dir (str): path to source data
 %  read_from_excel (bool): load data from .xlsx? (as opposed to .mat)
 %       show_plots (bool): visible plots?
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function stats_grid_memory(data_dir, read_from_excel, show_plots)
 
 if nargin < 1
     data_dir = '.'; % or indicate where data is saved

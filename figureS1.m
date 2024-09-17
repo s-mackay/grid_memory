@@ -1,7 +1,18 @@
-function figureS1(data_directory, read_from_excel)
-
 % this function will call figure2_subplanels to create all 4 subplots of
 % figure2.
+%
+% figure2(data_dir, read_from_excel)
+% INPUTS:
+%   data_dir (str):         Path to source data (default: 'source_data').
+%
+%   read_from_excel (bool): Flag to read from Excel (true) 
+%                           or .mat files (false) (default: false).
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function figureS1(data_directory, read_from_excel)
 
 if nargin < 1
     data_directory  = 'source_data';

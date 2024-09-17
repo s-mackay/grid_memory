@@ -1,6 +1,3 @@
-function gm_trialLength_RT_corrFalse_mixedEffectsModel(data_dir,...
-                                                 read_from_excel, do_plots)
-
 % Fitting a linear mixed effects model. 
 % reference:
 % https://www.mathworks.com/help/stats/linear-mixed-effects-model-workflow.html
@@ -23,7 +20,16 @@ function gm_trialLength_RT_corrFalse_mixedEffectsModel(data_dir,...
 %                                       of corrFalse across different
 %                                       patients and different sessions
 %                                       within patients
+%
+% function gm_trialLength_RT_corrFalse_mixedEffectsModel(data_dir,...
+%                                                read_from_excel, do_plots)
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
 
+function gm_trialLength_RT_corrFalse_mixedEffectsModel(data_dir,...
+                                                 read_from_excel, do_plots)
 
 % if you want to produce plots and save them, define this
 % outputDir = '';

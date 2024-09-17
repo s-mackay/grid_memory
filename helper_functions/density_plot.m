@@ -1,5 +1,12 @@
+%% function density_plot(spikes, idx)
+% creates density plot of the spikes 
+%
+%
+% Portions of this code were adapted from work by Simeon Knieling, with 
+% permission.
+%--------------------------------------------------------------------------
+
 function density_plot(spikes, idx)
-%%function density_plot(spikes, idx)
 
 color_ = [0 0 0];
 if ~exist('idx', 'var')
@@ -11,7 +18,8 @@ mean_spike = mean(wavs);
 std_spike = std(wavs);
 lbound=floor(min(min(wavs)));  %Lowest point of the figure
 ubound=ceil(max(max(wavs)));  %Highest point of the figure
-vps=size(spikes,2);   %Values per spike after interpolation. 64 without interpolation
+%Values per spike after interpolation. 64 without interpolation
+vps=size(spikes,2);   
 
 %Make the 2D histogram
 ybins=linspace(lbound,ubound,150);  %Vector of bins in vertical direction

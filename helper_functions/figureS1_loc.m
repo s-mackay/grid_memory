@@ -1,5 +1,3 @@
-function [results] = figureS1_loc(data_dir, id, data, read_from_xlsx)
-
 % function [results] = figureS1_loc(data_dir, id, data, read_from_xlsx)
 % this function creates full rasterplots for location cells
 % 
@@ -11,6 +9,12 @@ function [results] = figureS1_loc(data_dir, id, data, read_from_xlsx)
 %                       from .mat files. alternatively the struct called
 %                       results.
 % read_from_xlsx(bool): was the data loaded from .xlsx? (or .mat)
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function [results] = figureS1_loc(data_dir, id, data, read_from_xlsx)
 
 % set source directory for density data
 if nargin < 1; data_dir = 'source_data'; end

@@ -1,4 +1,3 @@
-function out_struct = read_figS6_results_from_xlsx(fname, sheetName)
     
 % function out_struct = read_figS6_results_from_xlsx(fname, sheetName)
 % reads data necessary to create figure S6 from .xlsx. All required
@@ -9,6 +8,12 @@ function out_struct = read_figS6_results_from_xlsx(fname, sheetName)
 %
 %   Output:
 %       out_struct (struct): Structure containing the read data.
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function out_struct = read_figS6_results_from_xlsx(fname, sheetName)
 
     % Read the content of the spreadsheet as a cell array
     data = readcell(fname, 'Sheet', sheetName);

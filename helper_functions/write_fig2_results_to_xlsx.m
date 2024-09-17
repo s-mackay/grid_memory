@@ -1,5 +1,3 @@
-function write_fig2_results_to_xlsx(results_cell, file_name, sheet_name)
-
 % function write_fig2_results_to_xlsx(results_cell, file_name, sheet_name)
 % writes the data necessary to plot figure 2 to .xlsx
 %
@@ -7,6 +5,12 @@ function write_fig2_results_to_xlsx(results_cell, file_name, sheet_name)
 %       results_cell: Cell array containing the data to be written.
 %       file_name (str): Name including path of the .xlsx document.
 %       sheet_name (str): Name of the worksheet within file_name.
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function write_fig2_results_to_xlsx(results_cell, file_name, sheet_name)
 
     data = {};
     [rows, cols] = size(results_cell);
@@ -63,7 +67,13 @@ end
 
 % % Example usage
 % resultsCell = {
-%     struct('stim_type', 1, 'pref_jpg', 'image.jpg', 'x', [1, 2, 3], 'rel_ts_rem', {[1, 2], [3, 4]}, 'rel_ts_forg', [1, 2, 3], 'pref_rem', 0.5, 'pref_forg', 0.6, 'non_pref_rem', 0.7, 'non_pref_forg', 0.8, 'spikeshapes', [1, 2; 3, 4]), 
-%     struct('stim_type', 2, 'pref_jpg', 'image2.jpg', 'x', [4, 5, 6], 'rel_ts_rem', {[5, 6], [7, 8]}, 'rel_ts_forg', [4, 5, 6], 'pref_rem', 0.55, 'pref_forg', 0.65, 'non_pref_rem', 0.75, 'non_pref_forg', 0.85, 'spikeshapes', [5, 6; 7, 8])
+%     struct('stim_type', 1, 'pref_jpg', 'image.jpg', 'x', [1, 2, 3],...
+%         'rel_ts_rem', {[1, 2], [3, 4]}, 'rel_ts_forg', [1, 2, 3],...
+%         'pref_rem', 0.5, 'pref_forg', 0.6, 'non_pref_rem', 0.7, ...
+%         'non_pref_forg', 0.8, 'spikeshapes', [1, 2; 3, 4]), 
+%     struct('stim_type', 2, 'pref_jpg', 'image2.jpg', 'x', [4, 5, 6],...
+%         'rel_ts_rem', {[5, 6], [7, 8]}, 'rel_ts_forg', [4, 5, 6],...
+%         'pref_rem', 0.55, 'pref_forg', 0.65, 'non_pref_rem', 0.75,...
+%         'non_pref_forg', 0.85, 'spikeshapes', [5, 6; 7, 8])
 % };
 % writeResultsToExcel(resultsCell, 'source_data_all_figures.xlsx', 'figure_2');

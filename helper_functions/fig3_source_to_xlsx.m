@@ -1,16 +1,21 @@
-function fig3_source_to_xlsx(means, sems, x, pos_true, neg_true, ...
-    source_data_fname, sheet_name)
-
+% function fig3_source_to_xlsx(means, sems, x, pos_true, neg_true, ...
+%     source_data_fname, sheet_name)
+%
 % wrote this in an effort to fit data for all figures into one excel file
 % with one sheet per figure. this is the fig 3 part.
-
-%means is a cell wth a 2-row-array for each panel. same with sems. x just
-%has one row because it's shared.
-%each row gets its own label because you can't really fit several 2d arrays
-%into one excel sheet well.
-
+% means is a cell wth a 2-row-array for each panel. same with sems. x just
+% has one row because it's shared.
+% each row gets its own label because you can't really fit several 2d 
+% arrays into one excel sheet well.
 % rem, remembered
 % forg, forgotten
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function fig3_source_to_xlsx(means, sems, x, pos_true, neg_true, ...
+    source_data_fname, sheet_name)
 
 data = {};
 for reg = 1:5

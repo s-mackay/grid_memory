@@ -1,3 +1,16 @@
+% [results] = read_fig3_table(table_dir, sheet_name)
+% read figure 3 data from .xlsx file.
+% returns a struct with data, specifically 
+% results.means    = means;
+% results.sems     = sems;
+% results.x        = x;
+% results.pos_true = pos_true;
+% results.neg_true = neg_true;
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
 function [results] = read_fig3_table(table_dir, sheet_name)
 
 if nargin < 1

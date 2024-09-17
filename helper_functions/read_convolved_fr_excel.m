@@ -1,3 +1,11 @@
+% [struct_out] = read_convolved_fr_excel(path)
+% reads convolved firing rates from .xlsx files at given path(str).
+% returns a struct containing time axis x and firing rate over time y
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
 function [struct_out] = read_convolved_fr_excel(path)
 
 

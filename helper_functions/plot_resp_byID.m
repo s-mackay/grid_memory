@@ -1,22 +1,26 @@
+% [relSpikesC, relSpikesF] = plot_resp_byID(id, ...
+%     img_or_pos, spiketable)
+%
+% plots simple raster plot of preferred stimulus only
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
 function [relSpikesC, relSpikesF] = plot_resp_byID(id, ...
     img_or_pos, spiketable)
 
-%plots simple raster plot of preferred stimulus only
-
 if img_or_pos ==1
-    prefThings = spiketable.pref_items{id};
+    %prefThings = spiketable.pref_items{id};
     st_c   = 'item_index'; % spikecell column for image indices
     pref_c = 'pref_items'; % spikecell column for preferred images
 else
-    prefThings = spiketable.pref_locs{id};
+    %prefThings = spiketable.pref_locs{id};
     st_c   = 'locs';      % spikecell column for position
     pref_c = 'pref_locs'; % spikecell column for preferred locs
 end
-categories = {'stimulus', 'position'};
-%load(sprintf('/media/data/per_stimulus/per_%s_enc_ranksum0-1000.mat',...
-%    categories{img_or_pos}), 'all_pvals');
-prefThings = spiketable.(pref_c){id};
 
+prefThings = spiketable.(pref_c){id};
 
 [relSpikesC, relSpikesF] = deal(cell(0,1));
 %will increase this in the loop 

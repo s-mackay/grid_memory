@@ -1,7 +1,6 @@
-function figure3(alpha_resp, plot_visibility, ...
-    narrow_ylims, seed, no_overlaps, which_half, binned_test,...
-    read_from_excel, data_dir)
-
+% This function plots figure 3 of Mackay et al. 2024 
+% (DOI:10.1038/s41467-024-52295-5)
+%
 % function figure3(alpha_resp, plot_visibility, ...
 %     narrow_ylims, seed, no_overlaps, which_half, binned_test,...
 %     read_from_excel, data_dir)
@@ -24,6 +23,14 @@ function figure3(alpha_resp, plot_visibility, ...
 %                           or .mat files (false) (default: false).
 %   data_dir (str):         Path to source data (default: 'source_data').
 %
+%
+% Mackay et al. 2024 (DOI:10.1038/s41467-024-52295-5)
+% License: MIT License (see LICENSE file for details)
+% -------------------------------------------------------------------------
+
+function figure3(alpha_resp, plot_visibility, ...
+    narrow_ylims, seed, no_overlaps, which_half, binned_test,...
+    read_from_excel, data_dir)
 
 if nargin < 9; data_dir ='source_data';end % assuming your working 
                                            %  directory is the git repo
@@ -72,6 +79,18 @@ elseif no_overlaps == 0 % allow overlaps, count both response types
    overl_str = '';
 end  
 
+if narrow_ylims
+    ylims = [-.05, .1];
+    yZoomStr = '_yZoom'; % will be added to figure title
+else
+    ylims = [-.5 4];
+    yZoomStr = '';
+end
+% when looking at only half of the trials, the figures will have
+% appropriate filenames
+half_strs = {'', '_1stHalf', '_2ndHalf'};
+half_str = half_strs{which_half+1};
+
 % what kind of figure is it
 if no_overlaps==0 && narrow_ylims==0 && which_half==0 && binned_test==1
     load_figure = '3'; 
@@ -87,6 +106,7 @@ elseif no_overlaps==0 && narrow_ylims==1 && which_half==0 && binned_test==1
 else
     load_figure = sprintf('3_variation_with%s%s%s_%s', overl_str,...
         yZoomStr, half_str, testname);
+    plotname = sprintf('figure%s', load_figure);
 end
 
 % for loading or saving source data from/to excel
@@ -97,10 +117,7 @@ end
 % we define only one alpha level to separate all cells into responsive or
 % non-responsive
 alpha_nonresp = alpha_resp;
-% when looking at only half of the trials, the figures will have
-% appropriate filenames
-half_strs = {'', '_1stHalf', '_2ndHalf'};
-half_str = half_strs{which_half+1};
+
 
 % if you want little labels on the effects, stating effect size etc, set
 % this to true
@@ -183,15 +200,9 @@ conv3.x_all = conv3_f.x_all;
 % these are the axis lims for the standard plots. ylims are overwritten
 % later if narrow_ylims is true
 xlims = [-500 1750];
-ylims = [-.5 4];
+% ylims = [-.5 4];
 clrs = [.2, .2, .8; .8 0 .2]; % colors
 
-if narrow_ylims
-    ylims = [-.05, .1];
-    yZoomStr = '_yZoom'; % will be added to figure title
-else
-    yZoomStr = '';
-end
 
 rgns  = {'Amy', 'Hipp', 'EC', 'PHC'};
 if alpha_resp == .001 && alpha_nonresp == alpha_resp
@@ -310,8 +321,8 @@ for reg = 1:4
     subplot(nrows,ncols,(reg-1)*ncols+2); 
     % responsive units
     if no_overlaps == 1
-        incl_these = lowest_p_item < alpha_r_selection &...
-                     lowest_p_loc <= lowest_o_item & ...
+        incl_these = lowest_p_loc < alpha_r_selection &...
+                     lowest_p_loc <= lowest_p_item & ...
                      response_info.brain_regs == reg;
     elseif no_overlaps == 2
         incl_these = lowest_p_loc < alpha_r_selection &...
@@ -469,7 +480,7 @@ if sum(incl_these) >0 && ~narrow_ylims
             [], gca,7, fs, plot_info);
         means{5, 2}    = results.means; %mean signals rem., forg.
         sems{5, 2}     = results.sem; %standard errors of the means
-        x{5, 2}        = conv1.x_all(x_inds);
+        x{5, 2}        = conv2.x_all(x_inds);
         pos_true{5, 2} = results.pos_true; % significant clusters 
         neg_true{5, 2}  = results.neg_true; % significant clsuters
     end
@@ -510,7 +521,7 @@ if ~do_binned
     text(1200, 1.25, txt, 'fontsize', fs-2)
 end
 
-if ~read_from_excel && ~narrow_ylims %because then we can just use figure3 data 
+if ~read_from_excel && ~narrow_ylims && no_overlaps ~= 1
     fig3_source_to_xlsx(means, sems, x, pos_true, neg_true,...
         source_data_fname, sheet_name);
 end
